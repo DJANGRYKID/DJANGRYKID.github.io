@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANGRYKID | Official Presskit</title>
+    <style>
+        /* Variables y Configuración Base */
+        :root {
+            --bg-color: #050505;
+            --text-color: #f4f4f4;
+            --accent-color: #ff2a2a; /* Rojo saturado para contraste */
+            --border-color: #333333;
+            --font-sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Courier New', Courier, monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Comportamiento de scroll suave para los enlaces del índice */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            text-transform: uppercase; /* Estilo techno/minimalista */
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Layout Principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Encabezados de Sección */
+        h2 {
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            font-weight: normal;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        /* Hero / Header con Índice */
+        header {
+            padding: 6rem 0; /* Reemplazamos los 100vh por un padding equilibrado */
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between; /* Empuja el logo a la izq y el menú a la der */
+            align-items: center;
+            gap: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Navegación del Header (A la derecha) */
+        .header-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            border-right: 2px solid var(--accent-color); /* Línea roja ahora a la derecha */
+            padding-right: 1.5rem;
+            text-align: right; /* Texto alineado a la derecha */
+        }
+
+        .header-nav a {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: #888;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        .header-nav a:hover {
+            color: var(--text-color);
+            transform: translateX(-10px); /* Ahora se desliza hacia la izquierda */
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        /* Responsive para Header */
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column; /* Primero logo, luego índice en móviles */
+                justify-content: center;
+                gap: 3rem;
+                padding: 4rem 0; /* Un poco menos de aire en celulares */
+            }
+            .header-nav ul {
+                border-right: none;
+                border-top: 2px solid var(--accent-color);
+                padding-right: 0;
+                padding-top: 2rem;
+                flex-direction: row;
+                flex-wrap: wrap;
+                text-align: center;
+                justify-content: center;
+            }
+            .header-nav a:hover {
+                transform: translateY(-5px); /* Deslizamiento hacia arriba en móvil */
+            }
+        }
+
+        .hero-title {
+            font-size: clamp(4rem, 12vw, 10rem);
+            font-weight: 900;
+            line-height: 0.9;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: #888;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        /* Bio Angrykid */
+        .bio-text {
+            font-size: clamp(1.2rem, 3vw, 2.5rem);
+            font-weight: 500;
+            text-transform: none;
+            line-height: 1.4;
+            max-width: 900px;
+        }
+
+        /* Trayectoria y Fortalezas*/
+        .grid-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .list-item h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .list-item p, .list-item ul {
+            text-transform: none;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: #ccc;
+            list-style: none;
+        }
+
+        .list-item li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .list-item li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* Mejor Trabajo */
+        .work-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .track-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .track-item:hover {
+            border-color: var(--text-color);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .track-info span {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: 1px solid var(--text-color);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        /* Estilo interactivo para el banner de YouTube */
+        .video-banner-link {
+            display: block;
+            width: 100%;
+            border: 1px solid var(--border-color);
+            transition: border-color 0.3s ease;
+            overflow: hidden;
+        }
+
+        .video-banner-link img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .video-banner-link:hover {
+            border-color: var(--accent-color);
+            transform: none; /* Evita que herede el transform del nav */
+        }
+
+        .video-banner-link:hover img {
+            opacity: 0.7;
+        }
+
+        /* Material Visual */
+        .press-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .press-photo {
+            aspect-ratio: 4/5;
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
+            color: #555;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        /* Contacto */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-info div {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info span {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-info a {
+            font-size: 1.5rem;
+            text-transform: lowercase;
+        }
+
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <!-- CONTENIDO DEL HEADER (Logo y Títulos) A LA IZQUIERDA -->
+            <div class="header-content">
+                <div class="hero-subtitle">[ PRESSKIT OFICIAL ]</div>
+                
+                <!-- ESPACIO PARA TU LOGO EN PNG -->
+                <img src="tu-logo-aqui.png" alt="ANGRYKID LOGO" style="max-width: 100%; max-height: 250px; margin-bottom: 1rem; object-fit: contain;">
+                
+                <div class="hero-subtitle" style="margin-top: 1rem;">SCHRANZ / HARDTECHNO</div>
+            </div>
+
+            <!-- ÍNDICE LATERAL A LA DERECHA -->
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="#bio">01. BIO</a></li>
+                    <li><a href="#highlights">02. HITOS & PUNTOS FUERTES</a></li>
+                    <li><a href="#work">03. DJ SET/TRACKS</a></li>
+                    <li><a href="#press">04. MATERIAL VISUAL</a></li>
+                    <li><a href="#contact">05. CONTACTO & REDES</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- BIO -->
+        <section id="bio">
+            <h2>01. BIO</h2>
+            <p class="bio-text">
+                DJ y productor de schranz/hardtechno activo en el circuito de música electrónica desde 2017. En el pasado conocido por sus presentaciones y producciones de alta energía con influencias del hardcore techno y techno industrial. Actualmente trabaja en entregar una propuesta fresca que trae de vuelta lo mejor del underground schranz old school.
+            </p>
+        </section>
+
+        <!-- HITOS -->
+        <section id="highlights">
+            <h2>02. HITOS & PUNTOS FUERTES</h2>
+            <div class="grid-list">
+                <div class="list-item">
+                    <h3>Soporte de otros artistas</h3>
+                    <ul>
+                        <li>Producciones suporteadas por artistas de la talla de Olmatri, Allison Trench, Aldes, Lena Crawdford, entre otros.</li>
+                    </ul>
+                </div>
+                <div class="list-item">
+                    <h3>Lanzamientos / Labels</h3>
+                    <ul>
+                        <li>TSA Records</li>
+                        <li>Inherente Project Records</li>
+                        <li>Tekpsy Records</li>
+                        <li>Ilegal Ravers</li>
+                    </ul>
+                </div>
+                <div class="list-item">
+                    <h3>Circuito / Presentaciones</h3>
+                    <ul>
+                        <li>Radikals</li>
+                        <li>TSA Records Showcase</li>
+                        <li>Microclub</li>
+                        <li>Transmission</li>
+                        <li>Techno Passagiers</li>
+                        <li>Presentaciones a lo largo del país (Base en Talca, Región del Maule).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRABAJO -->
+        <section id="work">
+            <h2>03. DJ SET/TRACKS</h2>
+            <div class="work-grid">
+                
+                <!-- Video DJ Set (CON IMAGEN DE BANNER CLICKEABLE) -->
+                <div class="track-item" style="flex-direction: column; align-items: stretch; gap: 1.5rem;">
+                    <!-- Cabecera con Info y Botón -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <div class="track-info">
+                            <span>[ VIDEO / DJ SET ]</span>
+                            <h3>Power Schranz 2026 (Promocional)</h3>
+                        </div>
+                        <a href="https://youtu.be/r31jPOsOn7I?si=fzAgGozm0kERomED" target="_blank" class="btn">Ver en YouTube</a>
+                    </div>
+                    
+                    <!-- IMAGEN CON ENLACE DIRECTO A YOUTUBE -->
+                    <a href="https://youtu.be/r31jPOsOn7I?si=fzAgGozm0kERomED" target="_blank" class="video-banner-link">
+                        <img src="tu-banner-youtube.png" alt="Vista previa Power Schranz 2026">
+                    </a>
+                </div>
+
+                <!-- Track 1 (INHERENTE PROJECT) - FORMATO VISUAL -->
+                <div class="track-item" style="flex-direction: column; align-items: stretch; gap: 1.5rem;">
+                    <div class="track-info">
+                        <span>[ TRACK / INHERENTE PROJECT ]</span>
+                        <h3>Angrykid - Red Hot Schranz</h3>
+                    </div>
+                    <!-- IFRAME DE SOUNDCLOUD LIMPIO (Alto 300px) -->
+                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2167254738&color=%23ff1313&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                </div>
+
+                <!-- Track 2 (TSA RECORDS) - FORMATO VISUAL -->
+                <div class="track-item" style="flex-direction: column; align-items: stretch; gap: 1.5rem;">
+                    <div class="track-info">
+                        <span>[ TRACK / TSA RECORDS ]</span>
+                        <h3>Angrykid - Hakken</h3>
+                    </div>
+                    <!-- IFRAME DE SOUNDCLOUD LIMPIO (Alto 300px) -->
+                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1475700130&color=%23ff1313&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                </div>
+
+                <!-- Track 3 (UNRELEASED REMIX) - FORMATO VISUAL -->
+                <div class="track-item" style="flex-direction: column; align-items: stretch; gap: 1.5rem;">
+                    <div class="track-info">
+                        <span>[ REMIX / UNRELEASED ]</span>
+                        <h3>Burial - Forgive (Angrykid Remix)</h3>
+                    </div>
+                    <!-- IFRAME DE SOUNDCLOUD LIMPIO (Alto 300px) -->
+                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2225860343%3Fsecret_token%3Ds-acm8ZD3Uc5j&color=%23ff2a2a&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- MATERIAL VISUAL -->
+        <section id="press">
+            <h2>04. MATERIAL VISUAL</h2>
+            <p style="font-family: var(--font-mono); font-size: 0.9rem; color: #888; margin-bottom: 2rem; text-transform: none;">
+                Imágenes en alta resolución disponibles para uso en medios y cartelería.
+            </p>
+            <div class="press-grid">
+                <div class="press-photo">[ IMG_PRESS_01.JPG ]</div>
+                <div class="press-photo">[ IMG_PRESS_02.JPG ]</div>
+                <div class="press-photo">[ IMG_PRESS_03.JPG ]</div>
+                <div class="press-photo">[ LOGO_VECTOR.EPS ]</div>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contact">
+            <h2>05. CONTACTO & REDES</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div>
+                        <span>[ BOOKING & INFO ]</span>
+                        <h3>Gonzalo Vásquez</h3>
+                    </div>
+                    <div>
+                        <span>[ CORREO ELECTRÓNICO ]</span>
+                        <a href="mailto:goonzoo48@gmail.com">goonzoo48@gmail.com</a>
+                    </div>
+                    <div>
+                        <span>[ TELÉFONO / WHATSAPP ]</span>
+                        <a href="tel:+56973976118">+569 73976118</a>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <div>
+                        <span>[ INSTAGRAM ]</span>
+                        <a href="https://instagram.com/angrykid_" target="_blank">@angrykid_</a>
+                    </div>
+                    <div>
+                        <span>[ SOUNDCLOUD ]</span>
+                        <a href="https://soundcloud.com/byangrykid" target="_blank">soundcloud.com/byangrykid</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 ANGRYKID. ALL RIGHTS RESERVED.
+        </footer>
+    </div>
+
+</body>
+</html>

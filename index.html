@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ANGRYKID | Official Presskit</title>
+    
+    <!-- AQUÍ SE CARGA EL ÍCONO DE LA PESTAÑA -->
+    <link rel="icon" type="image/png" href="FAVICON.PNG">
+    
     <style>
         /* Variables y Configuración Base */
         :root {
             --bg-color: #050505;
             --text-color: #f4f4f4;
-            --accent-color: #ff2a2a; /* Rojo saturado para contraste */
+            --accent-color: #ff2a2a; 
             --border-color: #333333;
             --font-sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             --font-mono: 'JetBrains Mono', 'Courier New', Courier, monospace;
@@ -31,7 +35,7 @@
             color: var(--text-color);
             font-family: var(--font-sans);
             line-height: 1.6;
-            text-transform: uppercase; /* Estilo techno/minimalista */
+            text-transform: uppercase; 
             overflow-x: hidden;
         }
 
@@ -69,13 +73,17 @@
 
         /* Hero / Header con Índice */
         header {
-            padding: 6rem 0; 
+            padding: 6rem 0 0 0; 
+            border-bottom: none; 
+        }
+
+        /* Contenedor principal del Header para mantener el flexbox intacto */
+        .header-main {
             display: flex;
             flex-direction: row;
             justify-content: space-between; 
             align-items: center;
             gap: 2rem;
-            border-bottom: 1px solid var(--border-color);
         }
 
         /* Navegación del Header (A la derecha) */
@@ -110,18 +118,20 @@
 
         /* Responsive para Header */
         @media (max-width: 900px) {
-            header {
+            .header-main {
                 flex-direction: column; 
                 justify-content: center;
                 gap: 3rem;
-                padding: 4rem 0; 
+            }
+            .header-content {
+                align-items: center;
+                text-align: center;
             }
             .header-nav ul {
                 border-right: none;
                 border-top: 2px solid var(--accent-color);
                 padding-right: 0;
                 padding-top: 2rem;
-                /* CORRECCIÓN: Columna en vez de fila para evitar que se mezclen */
                 flex-direction: column; 
                 align-items: center;
                 text-align: center;
@@ -147,6 +157,66 @@
             margin-bottom: 1rem;
         }
 
+        /* MARQUESINA (TEXTO EN MOVIMIENTO) */
+        .marquee-section {
+            margin-top: 5rem; 
+            margin-bottom: 3rem; 
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .marquee-title {
+            font-family: var(--font-mono);
+            font-size: 1.5rem; 
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            text-align: center; 
+        }
+
+        .marquee-container {
+            width: 100%; 
+            position: relative;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0; 
+            overflow: hidden;
+            display: flex; 
+        }
+
+        .marquee-content {
+            display: flex;
+            width: max-content;
+            animation: marquee 35s linear infinite; 
+            font-family: var(--font-mono);
+            font-size: 1.1rem; /* TEXTO REDUCIDO */
+            color: #ccc;
+        }
+
+        .marquee-item {
+            white-space: nowrap;
+        }
+
+        /* Estilo para las fechas en negrita */
+        .marquee-content b {
+            color: var(--text-color);
+            font-weight: 900;
+        }
+
+        /* Separador visual */
+        .marquee-content .separator {
+            color: var(--accent-color);
+            margin: 0 10px;
+        }
+
+        /* Loop continuo usando transform */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+
         /* Bio Angrykid */
         .bio-text {
             font-size: clamp(0.85rem, 2.1vw, 1.75rem); 
@@ -154,6 +224,8 @@
             text-transform: none;
             line-height: 1.4;
             max-width: 900px;
+            margin: 0; /* Quita el centrado del bloque */
+            text-align: left; /* ALINEACIÓN A LA IZQUIERDA */
         }
 
         /* Trayectoria y Fortalezas*/
@@ -320,28 +392,65 @@
 <body>
 
     <div class="container">
-        <!-- HEADER -->
+        <!-- HEADER COMPLETO -->
         <header>
-            <!-- CONTENIDO DEL HEADER (Logo y Títulos) A LA IZQUIERDA -->
-            <div class="header-content">
-                <div class="hero-subtitle">[ PRESSKIT OFICIAL ]</div>
-                
-                <!-- ESPACIO PARA TU LOGO EN PNG -->
-                <img src="angrykid-logo.png" alt="ANGRYKID LOGO" style="max-width: 100%; max-height: 250px; margin-bottom: 1rem; object-fit: contain;">
-                
-                <div class="hero-subtitle" style="margin-top: 1rem;">POWER SCHRANZ / HARDTECHNO</div>
+            <div class="header-main">
+                <!-- CONTENIDO DEL HEADER (Logo y Títulos) A LA IZQUIERDA -->
+                <div class="header-content">
+                    <div class="hero-subtitle">[ PRESSKIT OFICIAL ]</div>
+                    
+                    <!-- ESPACIO PARA TU LOGO EN PNG -->
+                    <img src="angrykid-logo.png" alt="ANGRYKID LOGO" style="max-width: 100%; max-height: 250px; margin-bottom: 1rem; object-fit: contain;">
+                    
+                    <div class="hero-subtitle" style="margin-top: 1rem;">POWER SCHRANZ / HARDTECHNO</div>
+                </div>
+
+                <!-- ÍNDICE LATERAL A LA DERECHA -->
+                <nav class="header-nav">
+                    <ul>
+                        <li><a href="#bio">01. BIO</a></li>
+                        <li><a href="#highlights">02. HITOS Y PUNTOS FUERTES</a></li>
+                        <li><a href="#work">03. DJ SET/TRACKS</a></li>
+                        <li><a href="#press">04. MATERIAL VISUAL</a></li>
+                        <li><a href="#contact">05. CONTACTO Y REDES</a></li>
+                    </ul>
+                </nav>
             </div>
 
-            <!-- ÍNDICE LATERAL A LA DERECHA -->
-            <nav class="header-nav">
-                <ul>
-                    <li><a href="#bio">01. BIO</a></li>
-                    <li><a href="#highlights">02. HITOS Y PUNTOS FUERTES</a></li>
-                    <li><a href="#work">03. DJ SET/TRACKS</a></li>
-                    <li><a href="#press">04. MATERIAL VISUAL</a></li>
-                    <li><a href="#contact">05. CONTACTO Y REDES</a></li>
-                </ul>
-            </nav>
+            <!-- SECCIÓN DE FECHAS EN MOVIMIENTO -->
+            <div class="marquee-section">
+                <div class="marquee-title">PRÓXIMAS PRESENTACIONES 2026</div>
+                <div class="marquee-container">
+                    <div class="marquee-content">
+                        <!-- Bloque 1 -->
+                        <div class="marquee-item">
+                            <b>20 JUNIO</b> <span class="separator">|</span> RADIKALS (SANTIAGO)
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>03 JULIO</b> <span class="separator">|</span> ANOMALY RAVE x COSMIC GROOVE (TALCA)
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>01 AGOSTO</b> <span class="separator">|</span> GARGOLAS (TALCA)
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>07 AGOSTO</b> <span class="separator">|</span> NOBI (TALCA)
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>08 AGOSTO</b> <span class="separator">|</span> PUNTADASNEN (TALCA)
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                        <!-- Bloque 2 (Duplicado exacto para el efecto continuo) -->
+                        <div class="marquee-item">
+                            <b>20 JUNIO</b> <span class="separator">|</span> RADIKALS (SANTIAGO)
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>03 JULIO</b> <span class="separator">|</span> ANOMALY RAVE x COSMIC GROOVE (TALCA)
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>01 AGOSTO</b> <span class="separator">|</span> GARGOLAS (TALCA)
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>07 AGOSTO</b> <span class="separator">|</span> NOBI (TALCA)
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>08 AGOSTO</b> <span class="separator">|</span> PUNTADASNEN (TALCA)
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
         </header>
 
         <!-- BIO -->
